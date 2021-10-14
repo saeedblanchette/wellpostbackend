@@ -1,0 +1,25 @@
+[
+    {
+      "model": "willlpost.user",
+      "pk": 125,
+      "fields": {
+        "first_name": "John",
+        "last_name": "Lennon",
+        "email":"email@com.ja"
+
+        
+
+      }
+    },
+    {
+      "model": "willlpost.Contact",
+      "pk": 225,
+      "fields": {
+        "first_name": "Paul",
+        "last_name": "McCartney",
+        "email":"email@com.jas",
+        "from_user":125,
+        "is_safe_guard":true
+      }
+    }
+  ]
