@@ -1,9 +1,20 @@
-{% autoescape off %}
-Hello You're receiving this email because you requested a password reset for your user account at {{ site_name }}.
-Please go to the following page to login:
-{% block reset_link %}
-{{ password_reset_url }}
-{% endblock %}
-Thanks for using our site
-The {{ site_name }} team.
-{% endautoescape %}
+{% extends "account/email/base.html" %}
+{% load account %}
+{% load i18n %}
+
+{% block content %}
+    {% autoescape off %}
+        {% user_display user as user_display %}
+
+      
+
+        <div class="card-body">
+
+            <p>You're receiving this email to Confirm your equity on
+                {{ site_name }}. To confirm this is correct, go to
+                                                                                                                                               .
+                <a class="link link link-primary  text-info  " href="{{ activate_url }}">{{ activate_url }}</a>
+                .</p>
+
+        </div>
+{% endautoescape %}{% endblock %}

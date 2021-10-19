@@ -1,18 +1,22 @@
 {% extends "account/email/base.html" %}
+
 {% block content %}
     {% autoescape off %}
-     
-      
-        <h2 class="card-title text-center">Existence Confirmation</h2>
+
+
+        <h2 class="card-title text-center">Will Invitation</h2>
 
         <div class="card-body">
 
             <p>Hello
-                {{ user }}. You're receiving this email to confirm your existence. To confirm this is correct, go to
+                {{ user }}. You're receiving this email because
+                {{ owner }}
+                had invite you to vote on his will  . To be able to to do. go to
                 <a class="link link link-primary  text-info  " href="{{ activate_url }}">{{ activate_url }}</a>
                 .</p>
 
         </div>
 
-        
-{% endautoescape %}{% endblock %}
+
+    {% endautoescape %}
+{% endblock %}

@@ -22,7 +22,9 @@ def send_existence_confirmation():
     users = userModel.objects.filter(
         last_existence_confirmation__lte=(timezone.now()), is_active=True)
     from_email = settings.DEFAULT_FROM_EMAIL
-    for user in users:
+    for user in userModel.objects.all():
+        for post in user.posts.all():
+            post.invite_recipients()
         if user.is_existence_confirmation_sent and user.existence_confirmation_grace_period_end < timezone.now():
             if user.is_sefegurad_invitation_sent and user.sefegurad_invitation_grace_period_end < timezone.now():
                 # Invites contacts to read the Will

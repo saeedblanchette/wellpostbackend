@@ -107,12 +107,13 @@ class CustomPasswordResetSerializer(PasswordResetSerializer):
         # Set some values to trigger the send_email method.
         opts = {
             'use_https': request.is_secure(),
-            'from_email': 'example@yourdomain.com',
+            'from_email': 'willpost@noreply.com',
             'request': request,
             'domain_override': settings.URL_FRONT,
             'token_generator': default_token_generator,
-            'extra_email_context': {'URL_FRONT': settings.URL_FRONT}
-            # 'email_template_name':'willpost/registration/password_reset_email.html'
+            'extra_email_context': {'URL_FRONT': settings.URL_FRONT,'site_name':settings.SITE_NAME},
+            'html_email_template_name':'registration/password_reset_email.html',
+            'email_template_name':'registration/password_reset_email.txt'
 
         }
         opts.update(self.get_email_options())

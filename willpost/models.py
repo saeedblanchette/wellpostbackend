@@ -240,7 +240,7 @@ class Contact(VoteHolder):
         context = {"user": self.get_full_name(), 'site': SITE_NAME,
                    'activate_url': f'{get_vote_url()}{self.generate_vote_signature()}'}
         send_email("Vote Invitation  ", from_email, self.email,
-                   context, 'email/existence_confirmation.txt', 'email/existence_confirmation.html')
+                   context, 'email/vote_invitation.txt', 'email/vote_invitation.email.html')
 
 
 class Post(models.Model):
@@ -269,10 +269,10 @@ class Post(models.Model):
         from willpost.serializers import send_email
         from_email = settings.DEFAULT_FROM_EMAIL
         for recipient in self.recipients.all():
-            context = {"user": self.owner.get_full_name(), 'site': SITE_NAME,
-                       'activate_url': f'{get_frontend_post_url()}{self.generate_post_signature()}'}
-            send_email(f" Reading {self.owner.get_full_name()} Will Invitation ", from_email, recipient.email,
-                       context, 'email/existence_confirmation.txt', 'email/existence_confirmation.html')
+            context = {"user": recipient.get_full_name(), 'site': SITE_NAME,
+                       'activate_url': f'{get_frontend_post_url()}{self.generate_post_signature()}', 'owner': self.owner.get_full_name()}
+            send_email(f" Will Invitation: Reading {self.owner.get_full_name()}  ", from_email, recipient.email,
+                       context, 'email/will_invitation.txt', 'email/will_invitation.email.html')
         self.owner.is_active = False
         self.owner.save()
 

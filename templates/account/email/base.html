@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.5/dist/full.css" rel="stylesheet" type="text/css"/>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css"/>
+
+    </head>
+    <body class="h-full">
+        <header id='header' class="navbar mb-2 shadow-lg bg-neutral text-neutral-content ">
+
+            <div class="flex-1 px-2 mx-2">
+                <span class="text-lg font-bold">
+                    Willpost
+                </span>
+            </div>
+            <div class="flex-none"></div>
+
+        </header>
+
+        <main id="content">
+            <div class="card lg:card-side bordered">
+                <div class="card-body"> {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </main>
+
+
+        </body>
+        <footer class="p-4 footer bg-neutral text-base-content footer-center fixed inset-x-0 bottom-0">
+            <div>
+                <p>Copyright © 2021 - All right reserved by Willpost </p>
+            </div>
+        </footer>
+    </html>

@@ -1,5 +1,4 @@
 
-
-You're receiving this e-mail because user {{ user }} has given your e-mail address to register an account on  {{ site_domain }}.
+You're receiving this e-mail because user {{ user }} has given your e-mail address to register an account on  {{ site }}.
 
 To confirm this is correct, go to  {{ activate_url }} .

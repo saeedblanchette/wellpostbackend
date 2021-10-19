@@ -1,4 +1,3 @@
-
 {% extends "account/email/base.html" %}
 
 {% block content %}
@@ -9,10 +8,11 @@
 
         <div class="card-body">
 
-            <p> You're receiving this email because
-                {{ user_display }
+            <p>Hello
+                {{ user }}. You're receiving this email because
+                {{ owner }}
                 had invite you to read his will  . To be able to to do. go to
-                <a class="link link link-primary  text-info  " href="{{ confirmation_url }}">{{ confirmation_url }}</a>
+                <a class="link link link-primary  text-info  " href="{{ activate_url }}">{{ activate_url }}</a>
                 .</p>
 
         </div>

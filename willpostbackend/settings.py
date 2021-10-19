@@ -27,8 +27,6 @@ SECRET_KEY = 'django-insecure-uj1*a1!%lb5&*&&!+wr)(90_!v48_twp7r0wu3e=cw37wf1abl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -158,7 +156,6 @@ INSTALLED_APPS += [
 
 ]
 
-SITE_ID = 1
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
@@ -181,23 +178,10 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USERNAME_REQUIRED = False
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = False
-EMAIL_HOST = '0.0.0.0'
-EMAIL_PORT = 1025
-EMAIL_PASSWORD = ''
-# Optional SMTP authentication information for EMAIL_HOST.
-EMAIL_HOST_USER = ''
+
 
 ACCOUNT_ADAPTER = 'willpost.adapter.DefaultAccountAdapterCustom'
-URL_FRONT = 'localhost:3000'
-FRONEND_CONFIRMATION_URL='http://localhost:3000/confirmation/'
-FRONEND_VOTE_URL='http://localhost:3000/vote/'
-FRONEND_VOTE_URL='http://localhost:3000/post/'
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+
 REST_AUTH_SERIALIZERS = {
     'PASSWORD_RESET_SERIALIZER': 'willpost.serializers.CustomPasswordResetSerializer',
     'PASSWORD_RESET_CONFIRM_SERIALIZER': 'willpost.serializers.CustomPasswordResetConfirmSerializer',
@@ -217,8 +201,7 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 #     # 'disconnect': 'allauth.socialaccount.forms.DisconnectForm',
 # }
 
-DEFAULT_FROM_EMAIL = 'willpost@email.com'
-SITE_NAME = 'localhost:3000'
+
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=45),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1), }
@@ -260,3 +243,36 @@ Q_CLUSTER = {
     'bulk': 10,
     'orm': 'default'
 }
+ip_addr = 'http://34.77.63.151/'
+
+ALLOWED_HOSTS = []
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
+# email settings
+if DEBUG == True:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = False
+    EMAIL_HOST = '0.0.0.0'
+    EMAIL_PORT = 1025
+    EMAIL_HOST_PASSWORD = 'bchjxiojdpfpagle'
+    EMAIL_HOST_USER = ''
+    DEFAULT_FROM_EMAIL = 'willpost@noreplay.com'
+
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_PASSWORD = 'bchjxiojdpfpagle'
+    EMAIL_HOST_USER = 'saidblanchette.emaildev@gmail.com'
+    DEFAULT_FROM_EMAIL = 'saidblanchette.emaildev@gmail.com'
+# front end settings
+SITE_NAME = 'Willpost'
+URL_FRONT = 'localhost:3000'
+FRONEND_CONFIRMATION_URL = 'http://localhost:3000/confirmation/'
+
+FRONEND_VOTE_URL = 'http://localhost:3000/post/'
+
+SITE_ID = 1
